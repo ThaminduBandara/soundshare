@@ -84,7 +84,7 @@ export default function Myprofile() {
         </div>
 
         <div className='footer-cover'>
-            ttt
+            
         </div>
 
       </div>
