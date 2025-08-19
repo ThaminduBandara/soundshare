@@ -1,3 +1,4 @@
+
 import React from 'react'
 import './footer.css'
 import fb from '../assests/fb.svg'
@@ -47,3 +48,8 @@ export default function Footer() {
     </div>
   )
 }
+
+
+
+
+

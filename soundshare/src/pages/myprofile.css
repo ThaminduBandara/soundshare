@@ -1,0 +1,142 @@
+
+.myprofile-container {
+  
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    
+    
+}
+
+.right-side{
+    /* background-color: black; */
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 250px;
+    padding-left: 20%;
+
+    
+
+}
+
+.profile-details {
+    width: 100%;
+    /* height: 250px; */
+    background-color: #721111;
+    display: grid;
+    grid-template-columns: 20% 30%;
+   
+    /* align-items: start; */
+    /* justify-content: start; */
+    
+}
+
+.dp-div{
+    /* background-color: aqua; */
+    width: 100% ;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding-top: 40px;
+
+}
+
+.dp{
+
+    background-color: aliceblue;
+    width: 120px;
+    height: 120px;
+    border-radius: 120px;
+    /* background: url(<path-to-image>) lightgray 50% / cover no-repeat; */
+}
+
+.profile-info {
+    /* background-color: #9a8b8b; */
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 40% 35% 25%;
+    padding-top: 30px;
+    text-align: start;
+}
+
+
+
+
+h2{
+color: #d0caca;
+line-height: 20px;
+}
+
+.username-p{
+    color: #d0caca;
+    line-height: 10px;
+}
+
+.bio{
+    color: #d0caca;
+    line-height: 15px;
+}
+
+.count{
+    /* background-color: aquamarine; */
+    color: #d0caca;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+
+}
+
+.count-para{
+    /* background-color: #721111; */
+    line-height: 8px;
+}
+
+.edit-button{
+    background-color: #721111;
+    font-family: 'Abel', sans-serif;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    border-radius: 10px;
+    border: solid;
+    border-width: 1px;
+}
+
+
+.posts{
+
+
+    /* width: 100%;
+    display: grid;
+    grid-template-columns: 19% 19% 19% 19% 19%;
+    grid-template-rows: 20% 20% 20%;
+    justify-content: space-evenly;
+    background-color: #57b1d7;
+    row-gap: 30px; */
+
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    row-gap: 5px;
+    column-gap: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    
+
+    
+    
+}
+
+.footer-cover{
+   
+    height: 15vh;
+    width: 100%;
+}

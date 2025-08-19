@@ -1,0 +1,33 @@
+
+.homepost-container{
+
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    /* align-items: start; */
+    padding: 10px;
+
+}
+
+.homepost-img{
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+}
+
+.hp-name{
+
+    text-align: start;
+    font-family: 'Abel', sans-serif;
+
+}
+
+.like-comment{
+    /* background-color: aqua; */
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
