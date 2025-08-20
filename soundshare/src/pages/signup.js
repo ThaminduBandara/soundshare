@@ -1,8 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import './signup.css';
 
 export default function Signup()
 {
+
+  const navigate = useNavigate();
+
   return (
     <div className='signup-container'>
 
@@ -27,11 +31,11 @@ export default function Signup()
           <input type="text" className='s-email' placeholder='Email'/>
           <input type="password" className='s-password' placeholder='Password'/>
           <input type="password" className='con-password' placeholder='Confirm Password'/>
-          <button className='signup-button'>Sign Up</button>
+          <button className='signup-button' onClick={() => navigate('/login')}>Sign Up</button>
         </div>
 
         <div className='signup-footer'>
-          <p className='have-acc'>Already have an account?<span className='signup'> Login</span></p>
+          <p className='have-acc'>Already have an account?<span className='signup' onClick={() => navigate('/login')}> Login</span></p>
         </div>
 
         

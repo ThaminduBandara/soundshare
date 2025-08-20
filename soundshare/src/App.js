@@ -1,11 +1,11 @@
 // import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-// import Login from './pages/login';
+import Login from './pages/login';
 // import Signup from './pages/signup';
 // import Footer from './components/footer';
-import Myprofile from './pages/myprofile';
+// import Myprofile from './pages/myprofile';
 // import Home from './pages/home';
-import Newpost from './pages/newpost';
+// import Newpost from './pages/newpost';
 // import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <div className="App">
 
       
-        <Myprofile/>
+        <Login />
 
       </div>
 

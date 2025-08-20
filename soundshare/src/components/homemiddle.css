@@ -11,7 +11,13 @@
 }
 
 .home-top-right{
+   
+    
     width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
    
 }
 
@@ -24,4 +30,39 @@
     justify-content: center;
     align-items: end;
 
+}
+
+.custom-pill-2{
+
+ width: 100%;
+ height: 80px;
+ align-items: center;
+ justify-content: space-evenly;
+ gap: 15px;
+
+}
+
+.suggestion-buttons-2{
+    
+    /* background-color: #706363; */
+    width: 100%;
+    height:100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.custom-pill-2 .nav-link.active {
+  background-color: #721111;
+  color: #fff;
+}
+
+.custom-pill-2 .nav-link {
+  
+  background-color: #c4c4c4;
+  color: rgb(19, 17, 17);
+  border-radius: 20px;
+  
+ 
 }

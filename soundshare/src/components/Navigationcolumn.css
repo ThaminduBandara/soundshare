@@ -49,6 +49,7 @@ margin-left: 5px;
 
 .n-items{
     
+    cursor: pointer;
     display: grid;
     grid-template-columns: 10% 10%;
     gap: 20px;

@@ -110,15 +110,17 @@ line-height: 20px;
 
 .posts{
 
-
-    /* width: 100%;
+/* 
+    width: 100%;
     display: grid;
     grid-template-columns: 19% 19% 19% 19% 19%;
     grid-template-rows: 20% 20% 20%;
     justify-content: space-evenly;
     background-color: #57b1d7;
+    padding-top: 5px;
     row-gap: 30px; */
-
+   
+   
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -127,8 +129,8 @@ line-height: 20px;
     justify-content: start;
     row-gap: 1px;
     column-gap: 1px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     /* padding-left: 8px; */
     
 

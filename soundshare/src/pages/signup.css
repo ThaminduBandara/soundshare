@@ -140,5 +140,6 @@ line-height: 10px;
 }
 
 .signup{
+    cursor: pointer;
     color: #f6f2f2;
 }

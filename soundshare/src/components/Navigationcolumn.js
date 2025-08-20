@@ -1,4 +1,6 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import './Navigationcolumn.css';
 import add from '../assests/add.svg'
 import messages from '../assests/comment.svg'
@@ -10,6 +12,9 @@ import search from '../assests/search.svg'
 
 
 export default function Navigationcolumn() {
+
+  const navigate = useNavigate();
+
   return (
     <div className='navigation-column-container'>
       
@@ -22,7 +27,7 @@ export default function Navigationcolumn() {
 
       <div className='navigation-items'>
 
-        <div className='n-items'>
+        <div className='n-items' onClick={() => navigate('/home')}>
           <img src={home} alt="home" />
           <p>Home</p>
         </div>
@@ -47,12 +52,12 @@ export default function Navigationcolumn() {
           <p>Notifications</p>
         </div>
 
-        <div className='n-items'>
+        <div className='n-items' onClick={() => navigate('/newpost')}>
           <img src={add} alt="add" />
           <p>Upload</p>
         </div>
 
-        <div className='n-items'>
+        <div className='n-items' onClick={() => navigate('/myprofile')}>
           <img src={profile} alt="profile" />
           <p>Profile</p>
         </div>
