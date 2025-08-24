@@ -34,7 +34,7 @@ export default function Newpostmiddle() {
 
                 <div className='add-details'>
                     
-                    <input className='post-input' type="text" placeholder='name' />
+                    <input className='post-input' type="text" placeholder='Title' />
                     <input className='post-input' type="text" placeholder='Caption' />
                     <button className='add-post-btn'>POST</button>
 

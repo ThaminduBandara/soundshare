@@ -6,9 +6,14 @@ import Homepost from '../components/homepost';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Nav from 'react-bootstrap/Nav';
 
+import { useSelector } from 'react-redux';
+
 export default function Homemiddle() {
 
   const navigate = useNavigate();
+
+  const posts = useSelector((state) => state.posts); 
+  console.log(posts);
 
   return (
     <div className='homemiddle-container'>
