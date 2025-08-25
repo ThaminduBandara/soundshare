@@ -45,10 +45,18 @@ export default function Homemiddle() {
       
     </div>
 
-        <Homepost/>
-        <Homepost/>
-        <Homepost/>
-        <Homepost/>
+    {posts.map((post) => (
+
+    <div key={post._id} xs={12} sm={6}>
+
+       <Homepost post = {post} />
+       
+
+    </div>
+    
+    ))}
+       
+       
 
       
     </div>

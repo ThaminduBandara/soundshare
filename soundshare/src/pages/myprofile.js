@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useState} from 'react'
 import Navigationcolumn from '../components/Navigationcolumn';
 import Footer from '../components/footer';
 import './myprofile.css';
 import Profilepost from '../components/profilepost';
+import Singlepostview from '../pages/singlepostview';
+
+import { useSelector } from 'react-redux';
 
 export default function Myprofile() {
+
+    
+  const posts = useSelector((state) => state.posts);
+  const [selectedPost, setSelectedPost] = useState(null); 
+  console.log(posts);
+
+
   return (
-    
-   
-   
-    
-    
+
+
     <div className='myprofile-container'>
 
       
@@ -64,22 +71,26 @@ export default function Myprofile() {
 
             <div className='posts'>
           
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
-          <Profilepost/>
+          {/* {posts.map((post) => (
+          
+          //check this
+              <div key={post._id} xs={12} sm={6}>
+          
+                 <Profilepost post = {post} onclick={} />
+          
+              </div>
+              
+          ))} */}
+
+          {posts.map((post) => (
+        <div key={post._id} onClick={() => setSelectedPost(post)}>
+          <Profilepost post={post} />
+        </div>
+      ))}
+
+      <Singlepostview post={selectedPost} onClose={() => setSelectedPost(null)} />
+    
+      
 
         </div>
 

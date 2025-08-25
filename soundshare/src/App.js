@@ -1,9 +1,10 @@
 // import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Login from './pages/login';
+// import Singlepostview from './pages/singlepostview';
 
 import { useDispatch }  from 'react-redux';
-import React, { useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { getPosts } from './actions/posts';
 // import Signup from './pages/signup';
 // import Footer from './components/footer';
@@ -14,6 +15,7 @@ import { getPosts } from './actions/posts';
 
 function App() {
   
+  // const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
   
 
@@ -28,7 +30,7 @@ function App() {
       <div className="App">
 
       
-        <Login />
+        < Login/>
 
       </div>
 
