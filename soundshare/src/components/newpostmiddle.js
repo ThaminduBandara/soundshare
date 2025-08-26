@@ -182,7 +182,7 @@ const handleSubmit = (e) => {
         <div className='add-music'  >
           <input 
             type="file"
-             accept=".jpg,.png"
+             accept=".mp3,.wav"
              ref={musicInputRef} 
             onChange={(e) => setSelectedMFile(e.target.files[0])}
           />

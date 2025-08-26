@@ -78,8 +78,8 @@ export default function Updatepostmiddle({ post }) {
             onChange={(e) => handleFileChange(e, 'selectedMFile')}
           />
 
-          {/* {postData.selectedMFile && <audio controls src={postData.selectedMFile} />} */}
-          {postData.selectedMFile && <img src={postData.selectedMFile} alt="thumbnail" style={{ width: '100px' }} />}
+          {postData.selectedMFile && <audio controls src={postData.selectedMFile} />}
+          {/* {postData.selectedMFile && <img src={postData.selectedMFile} alt="thumbnail" style={{ width: '100px' }} />} */}
           <div className='add-icons'>
             <img src={Music} alt='music' />
           </div>
@@ -91,7 +91,7 @@ export default function Updatepostmiddle({ post }) {
         <div className='add-music'>
           <input
             type="file"
-            accept=".jpg,.png"
+            accept=".mp3,.wav"
             ref={thumbnailInputRef} 
             onChange={(e) => handleFileChange(e, 'selectedPFile')}
           />

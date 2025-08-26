@@ -67,3 +67,10 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+
+.audio {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #721111;
+}

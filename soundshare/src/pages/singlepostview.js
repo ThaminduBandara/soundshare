@@ -1,13 +1,21 @@
 import React from 'react';
 import './singlepostview.css';
+import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { deletePost } from '../actions/posts';
+// import ReactPlayer from 'react-player';
 
 
 export default function Singlepostview({ post, onClose }) {
  
+   const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deletePost(post._id));
+    onClose();
+  };
 
   const navigate = useNavigate();
    if (!post) return null; 
@@ -23,9 +31,18 @@ export default function Singlepostview({ post, onClose }) {
           <h2>{post.title}</h2>
           <h4>by {post.creator}</h4>
           <p>{post.caption}</p>
+
+            {/* {post.selectedMFile && ( */}
+      {post.selectedMFile && (
+        <audio className='audio' controls>
+          <source src={`http://localhost:3001${post.selectedMFile}`} type="audio/mpeg" />
+          
+        </audio>
+)}
+     {/* )}; */}
           
           <div className="popup-actions">
-            <DeleteIcon onClick={() => {}} style={{ cursor: 'pointer', color: 'red' }} />
+            <DeleteIcon onClick={handleDelete} style={{ cursor: 'pointer', color: 'red' }} />
             <EditIcon onClick={() => navigate(`/newpost/${post._id}`,{ state: post })} style={{ cursor: 'pointer', color: 'blue' }} />
           </div>
         </div>
