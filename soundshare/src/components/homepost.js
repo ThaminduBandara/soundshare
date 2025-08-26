@@ -1,13 +1,10 @@
 import React from 'react'
 import './homepost.css';
-// import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-// import Placeholder from 'react-bootstrap/Placeholder';
 import notifications from '../assests/like.svg';
 import messages from '../assests/comment.svg';
 import share from '../assests/share.svg';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+
 
 
 
@@ -23,8 +20,7 @@ export default function Homepost({post}) {
           <Card.Title className='hp-name'>
             <h4>{post.title}</h4>
             <h6>{post.creator}</h6>
-            <DeleteIcon onClick={() => {}}/>
-              <EditIcon onClick={() => {}}/>
+            
           </Card.Title>
           <Card.Text className='hp-name'>
             {post.caption}

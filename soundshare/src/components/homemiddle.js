@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './homemiddle.css';
 // import Suggestpost from '../components/suggestpost';
 import Homepost from '../components/homepost';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Nav from 'react-bootstrap/Nav';
+import Singlepostview from '../pages/singlepostview';
 
 import { useSelector } from 'react-redux';
 
@@ -12,8 +13,9 @@ export default function Homemiddle() {
 
   const navigate = useNavigate();
 
-  const posts = useSelector((state) => state.posts); 
-  console.log(posts);
+  const posts = useSelector((state) => state.posts);
+  const [selectedPost, setSelectedPost] = useState(null); 
+  // console.log(posts);
 
   return (
     <div className='homemiddle-container'>
@@ -47,7 +49,7 @@ export default function Homemiddle() {
 
     {posts.map((post) => (
 
-    <div key={post._id} xs={12} sm={6}>
+    <div key={post._id} xs={12} sm={6} onClick={() => setSelectedPost(post)}>
 
        <Homepost post = {post} />
        
@@ -55,6 +57,8 @@ export default function Homemiddle() {
     </div>
     
     ))}
+
+    <Singlepostview post={selectedPost} onClose={() => setSelectedPost(null)} />
        
        
 

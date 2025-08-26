@@ -1,5 +1,5 @@
 
-.newpostmiddle-container{
+.updatepostmiddle-container{
     
     width: 100%;
     height: 85vh;
@@ -10,7 +10,7 @@
     overflow-y: auto;
 }
 
-.newpostmiddle-top-right{
+.updatepostmiddle-top-right{
     
     color: white;
     width: 20%;
@@ -22,7 +22,7 @@
 }
 
 
-.newpostmiddle-top{
+.updatepostmiddle-top{
     background-color:#721111 ;
     width: 100%;
     display: flex;
@@ -32,7 +32,7 @@
 
 }
 
-.newpostmiddle-bottom{
+.updatepostmiddle-bottom{
     /* background-color: aqua; */
     width: 100%;
     height: 100%;

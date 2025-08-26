@@ -82,7 +82,7 @@
 // }
 
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './newpostmiddle.css';
 import Music from '../assests/music.svg';
 import Thumbnail from '../assests/thumbnail.svg';
@@ -132,6 +132,10 @@ const dispatch = useDispatch();
 const [selectedMFile, setSelectedMFile] = useState(null);
 const [selectedPFile, setSelectedPFile] = useState(null);
 
+
+  const musicInputRef = useRef(null);
+  const thumbnailInputRef = useRef(null);
+
 const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -143,6 +147,16 @@ const handleSubmit = (e) => {
   if (selectedPFile) formData.append('selectedPFile', selectedPFile);
 
   dispatch(createPost(formData));
+
+  setPostData({
+      title: '',
+      caption: '',
+      selectedMFile: '',
+      selectedPFile: ''
+    });
+    if (musicInputRef.current) musicInputRef.current.value = '';
+    if (thumbnailInputRef.current) thumbnailInputRef.current.value = '';
+
 };
 
 // const handleFileChange = (e, fileSetter) => {
@@ -155,6 +169,7 @@ const handleSubmit = (e) => {
 
 
   return (
+
     <div className='newpostmiddle-container'>
       <div className='newpostmiddle-top'>
         <div className='newpostmiddle-top-right'>
@@ -168,6 +183,7 @@ const handleSubmit = (e) => {
           <input 
             type="file"
              accept=".jpg,.png"
+             ref={musicInputRef} 
             onChange={(e) => setSelectedMFile(e.target.files[0])}
           />
 
@@ -183,6 +199,7 @@ const handleSubmit = (e) => {
           <input
             type="file"
             accept=".jpg,.png"
+            ref={thumbnailInputRef} 
             onChange={(e) => setSelectedPFile(e.target.files[0])}
           />
           <div className='add-icons'>
