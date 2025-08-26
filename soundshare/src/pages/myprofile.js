@@ -1,18 +1,25 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import Navigationcolumn from '../components/Navigationcolumn';
 import Footer from '../components/footer';
 import './myprofile.css';
 import Profilepost from '../components/profilepost';
 import Singlepostview from '../pages/singlepostview';
 
+import { useDispatch } from 'react-redux';
+import { getPosts } from '../actions/posts';
 import { useSelector } from 'react-redux';
 
 export default function Myprofile() {
 
+
+const dispatch = useDispatch();
+useEffect(() => {
+  dispatch(getPosts()); 
+}, [dispatch]);
     
   const posts = useSelector((state) => state.posts);
   const [selectedPost, setSelectedPost] = useState(null); 
-  console.log(posts);
+  // console.log(posts);
 
 
   return (

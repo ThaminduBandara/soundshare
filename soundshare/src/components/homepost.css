@@ -1,7 +1,7 @@
 
 .homepost-container{
 
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     /* align-items: start; */
