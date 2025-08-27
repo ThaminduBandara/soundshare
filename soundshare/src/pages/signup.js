@@ -1,11 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './signup.css';
+import { useDispatch } from 'react-redux';
+import { createUser } from '../actions/users';
 
 export default function Signup()
 {
 
+  const [userData, setUserData] = useState({
+   username: '',
+   email: '',
+   password: ''
+  });
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [profilePicture, setProfilePicture] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+     if (userData.password !== userData.Confirmpassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append('username', userData.username);
+    formData.append('email', userData.email);
+    formData.append('password', userData.password);
+  
+    if (profilePicture) formData.append('profilePicture', profilePicture);
+
+   try {
+      await  dispatch(createUser(formData));
+        navigate('/login'); 
+    } catch (error) {
+      console.error("Signup failed", error);
+    }
+
+    setUserData({
+        username: '',
+        email: '',
+        password: ''
+       
+      });
+      
+  
+  };
 
   return (
     <div className='signup-container'>
@@ -27,11 +70,49 @@ export default function Signup()
         
         <div className='signup-inputs'>
 
-          <input type="text" className='s-username' placeholder='Username'/>
-          <input type="text" className='s-email' placeholder='Email'/>
-          <input type="password" className='s-password' placeholder='Password'/>
-          <input type="password" className='con-password' placeholder='Confirm Password'/>
-          <button className='signup-button' onClick={() => navigate('/login')}>Sign Up</button>
+          {/* <input type="text" className='s-username' placeholder='Username'/> */}
+          <input
+            className='s-username'
+            type="text"
+            placeholder='Username'
+            value={userData.username}
+            onChange={(e) =>
+              setUserData({ ...userData, username: e.target.value })
+            }
+          />
+          {/* <input type="text" className='s-email' placeholder='Email'/> */}
+          <input
+            className='s-email'
+            type="text"
+            placeholder='Email'
+            value={userData.email}
+            onChange={(e) =>
+              setUserData({ ...userData, email: e.target.value })
+            }
+          />
+          {/* <input type="password" className='s-password' placeholder='Password'/> */}
+
+          <input
+            className='s-password'
+            type="password"
+            placeholder='Password'
+            value={userData.password}
+            onChange={(e) =>
+              setUserData({ ...userData, password: e.target.value })
+            }
+          />
+          {/* <input type="password" className='con-password' placeholder='Confirm Password'/> */}
+
+          <input
+            className='con-password'
+            type="password"
+            placeholder='Confirm Password'
+            value={userData.Confirmpassword}
+            onChange={(e) =>
+              setUserData({ ...userData, Confirmpassword: e.target.value })
+            }
+          />
+          <button className='signup-button' onClick={handleSubmit}>Sign Up</button>
         </div>
 
         <div className='signup-footer'>

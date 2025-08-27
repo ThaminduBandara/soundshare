@@ -64,7 +64,7 @@ export default function Updatepostmiddle({ post }) {
     <form className='newpostmiddle-container' onSubmit={handleSubmit}>
       <div className='newpostmiddle-top'>
         <div className='newpostmiddle-top-right'>
-          <h2>New Post</h2>
+          <h2>UpdatePost</h2>
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export default function Updatepostmiddle({ post }) {
         <div className='add-music'  >
           <input 
             type="file"
-             accept=".jpg,.png"
+             accept=".mp3,.wav"
              ref={musicInputRef} 
             onChange={(e) => handleFileChange(e, 'selectedMFile')}
           />
@@ -91,7 +91,7 @@ export default function Updatepostmiddle({ post }) {
         <div className='add-music'>
           <input
             type="file"
-            accept=".mp3,.wav"
+            accept=".jpg,.png"
             ref={thumbnailInputRef} 
             onChange={(e) => handleFileChange(e, 'selectedPFile')}
           />
