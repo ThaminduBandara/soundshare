@@ -5,14 +5,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch } from 'react-redux';
 import { deletePost } from '../actions/posts';
-// import ReactPlayer from 'react-player';
 
 
 export default function Singlepostview({ post, onClose }) {
  
    const dispatch = useDispatch();
+  //  console.log(post);
 
-  const handleDelete = () => {
+   const handleDelete = () => {
     dispatch(deletePost(post._id));
     onClose();
   };
@@ -32,14 +32,13 @@ export default function Singlepostview({ post, onClose }) {
           <h4>by {post.creator}</h4>
           <p>{post.caption}</p>
 
-            {/* {post.selectedMFile && ( */}
+            
       {post.selectedMFile && (
         <audio className='audio' controls>
           <source src={`http://localhost:3001${post.selectedMFile}`} type="audio/mpeg" />
           
         </audio>
 )}
-     {/* )}; */}
           
           <div className="popup-actions">
             <DeleteIcon onClick={handleDelete} style={{ cursor: 'pointer', color: 'red' }} />

@@ -15,7 +15,6 @@ export default function Home() {
         dispatch(getPosts());
     }, [dispatch ]);
 
-
   return (
 
 
@@ -40,9 +39,6 @@ export default function Home() {
                 
 
       </div>
- 
-  
-   
 
     <Footer/>
 

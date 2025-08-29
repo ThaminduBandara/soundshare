@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './homemiddle.css';
-// import Suggestpost from '../components/suggestpost';
 import Homepost from '../components/homepost';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Nav from 'react-bootstrap/Nav';
 import Singlepostview from '../pages/singlepostview';
+
 
 import { useSelector } from 'react-redux';
 
@@ -59,10 +59,7 @@ export default function Homemiddle() {
     ))}
 
     <Singlepostview post={selectedPost} onClose={() => setSelectedPost(null)} />
-       
-       
-
-      
+        
     </div>
   )
 }

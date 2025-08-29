@@ -11,7 +11,6 @@ export default function Newpost() {
 
 
   const location = useLocation();
-  // const postData = location.state;
   const postFromState = location.state; 
   const { id } = useParams();           
   const [postData, setPostData] = useState(postFromState || null);

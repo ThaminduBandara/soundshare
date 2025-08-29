@@ -1,13 +1,23 @@
 import { useNavigate } from 'react-router-dom';
-import React from 'react'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '../actions/users';
 import './login.css';
 
-export default function Login()
-{
+export default function Login(){
 
+  const [loginData, setLoginData] = useState({ email: '', password: '' });
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(login(loginData));
+    navigate('/home');
+  };
+
   return (
+
     <div className='login-container'>
 
       <div className='login-middle-container'>
@@ -27,17 +37,29 @@ export default function Login()
         </div>
         
         <div className='login-inputs'>
-          <input type="text" className='l-email' placeholder='Email'/>
-          <input type="password" className='l-password' placeholder='Password'/>
-          <button className='login-button' onClick={() => navigate('/home')}>Sign In</button>
+         
+          <input
+              className='l-email'
+              type="text"
+              placeholder='Email'
+              value={loginData.email}
+              onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
+          />
+        
+           <input
+              className='l-password'
+              type="password"
+              placeholder='Password'
+              value={loginData.password}
+              onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
+      />
+          <button className='login-button' onClick={handleLogin}>Sign In</button>
         </div>
 
         <div className='login-footer'>
           <p className='forgot-password'>Forgot Password?</p>
           <p className='dont-have'>Don't have an account? <span className='l-signup' onClick={() => navigate('/signup')}>Sign Up</span></p>
         </div>
-
-        
 
       </div>
 

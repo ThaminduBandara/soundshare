@@ -1,9 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './suggestioncolumn.css';
 import Nav from 'react-bootstrap/Nav';
 import Suggestpost from './suggestpost';
+ import { useSelector } from 'react-redux';
+ import { getUsers } from '../actions/users';
+ import { useDispatch }  from 'react-redux';
+
 
 export default function Suggestioncolumn() {
+
+  const dispatch = useDispatch();
+   useEffect(() => {
+          dispatch(getUsers());
+      }, [dispatch ]);
+ 
+  const users = useSelector((state) => state.users);
+  
+  const me = useSelector((state) => state.auth);
+
   return (
     <div className='suggestioncolumn-container'>
 
@@ -30,13 +44,13 @@ export default function Suggestioncolumn() {
 
     <div className='suggest-posts'>
 
-        <Suggestpost/>
-        <Suggestpost/>
-        <Suggestpost/>
-        <Suggestpost/>
-        <Suggestpost/>
-        <Suggestpost/>
-         
+      {users.map((user) => (
+
+        
+        user.name !== me.name && <Suggestpost user={user}  />
+
+      ))}
+  
         <div className='footer-cover-2'>
             
         </div>

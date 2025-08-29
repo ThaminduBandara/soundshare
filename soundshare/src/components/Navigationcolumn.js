@@ -13,7 +13,6 @@ import search from '../assests/search.svg'
 export default function Navigationcolumn() {
 
   const navigate = useNavigate();
-
   return (
     <div className='navigation-column-container'>
       

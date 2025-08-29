@@ -11,8 +11,6 @@ import share from '../assests/share.svg';
 export default function Homepost({post}) {
   return (
     
-
-
     <div className="homepost-container">
       <Card style={{ width: '40rem' }}>
         <Card.Img className='homepost-img' variant="top" src={post.selectedPFile} />
@@ -27,7 +25,7 @@ export default function Homepost({post}) {
           </Card.Text>
 
           <div className='like-comment'>
-            <img src={notifications} alt="notifications" onClick={() => {}} />{post.likeCount}
+            <img src={notifications} alt="notifications"  />{post.likeCount}
             <img src={messages} alt="messages" />
             <img src={share} alt="messages" />
             <div>234 plays</div>
@@ -37,7 +35,6 @@ export default function Homepost({post}) {
       </Card>
 
     </div>
-
-    
+ 
   )
 }

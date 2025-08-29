@@ -2,15 +2,12 @@
 const userReducer =  (users = [], action) => {
   
     switch (action.type ) {
-        case 'UPDATE':
+        case 'UPDATEU':
             return users.map((user) => user._id === action.payload._id ? action.payload : user);
-        case 'FETCH_ALL':
+        case 'FETCH_ALLU':
             return action.payload;
-        case 'CREATE':
+        case 'CREATEU':
             return [ ...users, action.payload ]; 
-        case 'DELETE':
-            return users.filter((user) => user._id !== action.payload);
-
         default:
             return users;
     }

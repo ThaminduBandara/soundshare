@@ -1,27 +1,22 @@
 
 
 import * as api  from '../api';
-import axios from "axios";
+
 
 export const getUsers = () => async(dispatch) => {
-
     try {
         const  {data} = await api.fetchUsers();
-        dispatch({ type: 'FETCH_ALL', payload: data });
+        dispatch({ type: 'FETCH_ALLU', payload: data });
     } catch (error) {
         console.log(error.message);
-    }
-    
+    }   
 }
 
 
-export const createUser = (user) => async (dispatch) => {
-                                    //
-  try {
-    const { data } = await axios.post('/api/createuser', user, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    });
-    dispatch({ type: 'CREATE', payload: data });
+export const createUser = (user) => async (dispatch) => {                                
+  try { 
+    const { data } = await api.createUser(user);
+    dispatch({ type: 'CREATEU', payload: data });
   } catch (error) {
     console.log(error);
   }
@@ -29,24 +24,43 @@ export const createUser = (user) => async (dispatch) => {
 
 
 
-export const updateUser = (id, user) => async (dispatch) => {
-    try {
-        const {data} = await api.updateUser(id, user);
-
-        dispatch({type: 'UPDATE', payload: data});
-    } catch (error) {
-        console.log(error.message);
-    }
-};
-
-
-export const deleteUser = (id) => async (dispatch) => {
+export const login = (userData) => async (dispatch) => {
   try {
-    await api.deleteUser(id); 
-    dispatch({ type: 'DELETE', payload: id }); 
-  }catch (error) {
-        console.log(error.message);
-    }
+    const { data } = await api.loginUser(userData);
+    dispatch({ type: 'LOGIN', payload: data.user });
+
+    localStorage.setItem('profile', JSON.stringify(data.user));
+    console.log(data.user);
+  } catch (error) {
+    console.log(error.response?.data?.message || error.message);
+    alert(error.response?.data?.message || 'Login failed');
+  }
 };
+
+
+export const fetchMe = (userData) => async (dispatch) => {
+  try {
+    const { data } = await api.fetchMe(userData);
+    dispatch({ type: 'FETCH_ME', payload: data.user });
+
+    localStorage.setItem('profile', JSON.stringify(data.user));
+    console.log(data.user);
+  } catch (error) {
+    console.log(error.response?.data?.message || error.message);
+    
+  }
+};
+
+
+export const updateUser = (id, user) => async (dispatch) => {
+  try {
+    const { data } = await api.updateUser(id, user);
+    dispatch({ type: 'UPDATEU', payload: data });
+  } catch (error) {
+    console.log(error.messsage);
+  }
+};
+
+
 
 

@@ -16,26 +16,24 @@ export default function Signup()
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [profilePicture, setProfilePicture] = useState(null);
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
      if (userData.password !== userData.Confirmpassword) {
-      alert("Passwords do not match!");
+      alert("Passwords do not match");
       return;
     }
-  
-    const formData = new FormData();
-    formData.append('username', userData.username);
-    formData.append('email', userData.email);
-    formData.append('password', userData.password);
-  
-    if (profilePicture) formData.append('profilePicture', profilePicture);
 
    try {
-      await  dispatch(createUser(formData));
+      await dispatch(createUser({
+    username: userData.username,
+    email: userData.email,
+    password: userData.password
+  }));
         navigate('/login'); 
+
     } catch (error) {
       console.error("Signup failed", error);
     }
@@ -45,8 +43,7 @@ export default function Signup()
         email: '',
         password: ''
        
-      });
-      
+      });   
   
   };
 
@@ -70,7 +67,6 @@ export default function Signup()
         
         <div className='signup-inputs'>
 
-          {/* <input type="text" className='s-username' placeholder='Username'/> */}
           <input
             className='s-username'
             type="text"
@@ -80,7 +76,7 @@ export default function Signup()
               setUserData({ ...userData, username: e.target.value })
             }
           />
-          {/* <input type="text" className='s-email' placeholder='Email'/> */}
+
           <input
             className='s-email'
             type="text"
@@ -90,7 +86,6 @@ export default function Signup()
               setUserData({ ...userData, email: e.target.value })
             }
           />
-          {/* <input type="password" className='s-password' placeholder='Password'/> */}
 
           <input
             className='s-password'
@@ -101,7 +96,6 @@ export default function Signup()
               setUserData({ ...userData, password: e.target.value })
             }
           />
-          {/* <input type="password" className='con-password' placeholder='Confirm Password'/> */}
 
           <input
             className='con-password'

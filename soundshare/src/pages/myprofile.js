@@ -2,25 +2,36 @@ import React, { useState, useEffect} from 'react'
 import Navigationcolumn from '../components/Navigationcolumn';
 import Footer from '../components/footer';
 import './myprofile.css';
+import Editprofile from './editprofile';
 import Profilepost from '../components/profilepost';
 import Singlepostview from '../pages/singlepostview';
-
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../actions/posts';
 import { useSelector } from 'react-redux';
 
 export default function Myprofile() {
 
+const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+const user = useSelector((state) => state.auth);
 
 const dispatch = useDispatch();
-useEffect(() => {
-  dispatch(getPosts()); 
-}, [dispatch]);
-    
-  const posts = useSelector((state) => state.posts);
-  const [selectedPost, setSelectedPost] = useState(null); 
-  // console.log(posts);
 
+
+
+ useEffect(() => {
+        dispatch(getPosts());
+       
+    }, [dispatch ]);
+
+
+
+  const posts = useSelector((state) => state.posts);
+
+  const filteredPosts = posts.filter(post => post.creator === user.username);
+  const [selectedPost, setSelectedPost] = useState(null); 
+
+  
 
   return (
 
@@ -36,16 +47,16 @@ useEffect(() => {
         <div className='profile-details'>
 
               <div className='dp-div'>
-                  <div className='dp'></div>
+                  <img className='dp' src={user?.profilePicture} alt="dp"  />
               </div>
       
         
             <div className='profile-info'>
 
                   <div className='user'>
-                    <h2>Name</h2>
-                    <p className='username-p'>@username</p>
-                    <p className='bio'>Music producer & DJ. Creating electronic beats and hip hop tracks.</p>
+                    <h2>{user?.name}</h2>
+                    <p className='username-p'>{user?.username}</p>
+                    <p className='bio'>{user?.bio}</p>
                   </div>
           
 
@@ -57,39 +68,34 @@ useEffect(() => {
                     </div>
 
                      <div className='count-para'>
-                        <p>12.4k</p>
+                        <p>{user?.followers}</p>
                         <p>Followers</p>
                     </div>
 
                     <div className='count-para'>
-                        <p>892</p>
+                        <p>{user?.following}</p>
                         <p>Following</p>
                     </div>
           
                   </div>
 
                   <div>
-                    <button className='edit-button'>Edit Profile</button>
+                    <button className='edit-button' onClick={() => setIsPopupOpen(true)}>Edit Profile</button>
                   </div>
+
+                  <Editprofile
+                      isOpen={isPopupOpen}
+                      onClose={() => setIsPopupOpen(false)}                    
+                   />
          
             </div>
 
         </div>
 
             <div className='posts'>
-          
-          {/* {posts.map((post) => (
-          
-          //check this
-              <div key={post._id} xs={12} sm={6}>
-          
-                 <Profilepost post = {post} onclick={} />
-          
-              </div>
-              
-          ))} */}
 
-          {posts.map((post) => (
+
+          {filteredPosts.map((post) => (
         <div key={post._id} onClick={() => setSelectedPost(post)}>
           <Profilepost post={post} />
         </div>
@@ -97,8 +103,6 @@ useEffect(() => {
 
       <Singlepostview post={selectedPost} onClose={() => setSelectedPost(null)} />
     
-      
-
         </div>
 
         <div className='footer-cover'>
@@ -107,9 +111,7 @@ useEffect(() => {
 
       </div>
       
-
       
-     
      <Footer/>
        
     </div>
