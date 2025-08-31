@@ -13,22 +13,31 @@ export default function Myprofile() {
 
 const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-const user = useSelector((state) => state.auth);
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const profile = localStorage.getItem('profile');
+    if (profile) {
+      setUser(JSON.parse(profile));
+    }
+  }, []);
+
 
 const dispatch = useDispatch();
-
-
 
  useEffect(() => {
         dispatch(getPosts());
        
     }, [dispatch ]);
 
+  
+
 
 
   const posts = useSelector((state) => state.posts);
 
-  const filteredPosts = posts.filter(post => post.creator === user.username);
+  const filteredPosts = posts.filter(post => post.creator === user?.username);
   const [selectedPost, setSelectedPost] = useState(null); 
 
   

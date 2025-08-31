@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../actions/users';
 import { useSelector } from 'react-redux';
@@ -10,7 +9,7 @@ import "./editprofile.css";
 const EditProfile = ({ isOpen, onClose }) => {
 
 
-const navigate = useNavigate();
+
 
 const user = useSelector((state) => state.auth);
 
@@ -66,7 +65,6 @@ const [profilePicture, setProfilePicture] = useState(null);
         if (imageInputRef.current) imageInputRef.current.value = '';
         
         onClose();
-        navigate('/login');
       };
 
   if (!isOpen) return null;

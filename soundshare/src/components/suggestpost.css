@@ -15,12 +15,21 @@
     
 }
 
+.dp2{
+
+
+    width: 70px;
+    height: 70px;
+    border-radius: 120px;
+   
+}
+
 .suggestpost-header {
    
   /* background-color: rgb(119, 127, 151); */
-  width: 75%;
+  width: 100%;
   display: grid;
-  grid-template-columns: 65% 30%;
+  grid-template-columns: 20% 40% 20%;
   grid-template-rows: 100px;
   align-items: center;
   justify-content: center;
@@ -28,6 +37,10 @@
   color: rgb(10, 8, 8);
   font-size: 24px;
   font-weight: bold;
+}
+
+.suggestpost-name{
+  /* background-color: #2D6BFF; */
 }
 
 

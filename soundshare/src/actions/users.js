@@ -38,24 +38,32 @@ export const login = (userData) => async (dispatch) => {
 };
 
 
-export const fetchMe = (userData) => async (dispatch) => {
-  try {
-    const { data } = await api.fetchMe(userData);
-    dispatch({ type: 'FETCH_ME', payload: data.user });
-
-    localStorage.setItem('profile', JSON.stringify(data.user));
-    console.log(data.user);
-  } catch (error) {
-    console.log(error.response?.data?.message || error.message);
-    
-  }
+export const logout = () => (dispatch) => {
+  dispatch({ type: 'LOGOUT' });
 };
+
+// export const fetchMe = (userData) => async (dispatch) => {
+//   try {
+//     const { data } = await api.fetchMe(userData);
+//     dispatch({ type: 'FETCH_ME', payload: data.user });
+
+//     localStorage.setItem('profile', JSON.stringify(data.user));
+//     console.log(data.user);
+//   } catch (error) {
+//     console.log(error.response?.data?.message || error.message);
+    
+//   }
+// };
+
 
 
 export const updateUser = (id, user) => async (dispatch) => {
   try {
     const { data } = await api.updateUser(id, user);
     dispatch({ type: 'UPDATEU', payload: data });
+
+    localStorage.setItem('profile', JSON.stringify(data));
+
   } catch (error) {
     console.log(error.messsage);
   }

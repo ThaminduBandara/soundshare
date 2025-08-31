@@ -47,7 +47,7 @@ export default function Suggestioncolumn() {
       {users.map((user) => (
 
         
-        user.name !== me.name && <Suggestpost user={user}  />
+        user.name !== me?.name && <Suggestpost user={user}  />
 
       ))}
   

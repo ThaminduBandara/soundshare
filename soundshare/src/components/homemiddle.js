@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {logout} from '../actions/users';
 import './homemiddle.css';
 import Homepost from '../components/homepost';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -15,13 +17,19 @@ export default function Homemiddle() {
 
   const posts = useSelector((state) => state.posts);
   const [selectedPost, setSelectedPost] = useState(null); 
-  // console.log(posts);
+  
+const dispatch = useDispatch();
+
+const handleLogout = () => {
+  dispatch(logout());
+  navigate('/login')
+};
 
   return (
     <div className='homemiddle-container'>
 
         <div className='home-top'>
-            <div className='home-top-right' onClick={() => navigate('/login')}>
+            <div className='home-top-right' onClick={handleLogout}>
                 <i className="bi bi-box-arrow-in-right" style={{ fontSize: '2rem' }}></i>
                 <p>Log Out</p>
             </div>

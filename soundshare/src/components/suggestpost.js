@@ -13,8 +13,8 @@ export default function Suggestpost( {user} ) {
     <div className='suggestpost-container'>
 
       <div className='suggestpost-header'>
-
-        <div className='suggestpost-name'>
+        <img className='dp2' src={user?.profilePicture} alt='profile' />
+        <div className='suggestpost-name'> 
             <h5>{user.name}</h5>
             <h6>{user.username}</h6>
         </div>
