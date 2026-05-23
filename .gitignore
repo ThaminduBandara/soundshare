@@ -1,0 +1,9 @@
+.DS_Store
+frontend-git-backup/
+soundshare/node_modules/
+soundshare/build/
+soundshare/dist/
+soundshare/.env
+soundsharebackend/node_modules/
+soundsharebackend/.env
+soundsharebackend/uploads/

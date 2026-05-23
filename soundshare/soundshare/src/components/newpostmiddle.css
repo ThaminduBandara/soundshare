@@ -1,0 +1,120 @@
+
+.newpostmiddle-container{
+    
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.newpostmiddle-top-right{
+    
+    color: white;
+    width: 20%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+}
+
+
+.newpostmiddle-top{
+    background-color:#721111 ;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.newpostmiddle-bottom{
+    /* background-color: aqua; */
+    width: 100%;
+    height: 100%;
+    /* display: grid;
+    grid-template-rows: 30% 30% 30%;
+    grid-template-columns: 60%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.add-music{
+    /* background-color: #721111; */
+    width: 50%;
+    height: 30%;
+    color: rgb(176, 172, 172);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: dashed 2px rgb(215, 209, 209);
+    border-radius: 20px;
+}
+
+.add-icons{
+
+    border-radius: 9999px;
+    background: rgba(114, 17, 17, 0.10);
+    width: 20%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* .add-thumbnail{
+
+
+    width: 50%;
+     height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: dashed 2px rgb(122, 119, 119);
+    border-radius: 20px;
+
+} */
+
+.add-details{
+    /* background-color: #908686; */
+    width: 50%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.post-input{
+
+    border: 2px solid #e8eaeb;
+    background: #eef0f2;
+    width: 90%;
+    height: 20%;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    /* font-family: 'Abel', sans-serif; */
+}
+
+.add-post-btn{
+    width: 90%;
+    height: 20%;
+    background-color: #721111;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Abel', sans-serif;
+    cursor: pointer;
+}
