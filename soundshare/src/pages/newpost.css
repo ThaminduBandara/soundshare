@@ -1,0 +1,27 @@
+.newpost-container{
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+  
+}
+
+
+.newpost-upper{
+
+    width: 100%;
+    flex: 1;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
+    overflow: hidden;
+    flex: 1;
+    height: 0;
+    min-height: 0;
+ 
+  
+}
+
+
