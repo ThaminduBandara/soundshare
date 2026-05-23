@@ -26,31 +26,27 @@ const [selectedPFile, setSelectedPFile] = useState(null);
   const musicInputRef = useRef(null);
   const thumbnailInputRef = useRef(null);
 
+  // store raw File objects for upload via FormData
+
 
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const formData = new FormData();
-  formData.append('title', postData.title);
-  formData.append('caption', postData.caption);
-  formData.append('creator', user.username);
+    const formData = new FormData();
+    formData.append('title', postData.title);
+    formData.append('caption', postData.caption);
+    formData.append('creator', user.username);
+    if (selectedMFile) formData.append('selectedMFile', selectedMFile);
+    if (selectedPFile) formData.append('selectedPFile', selectedPFile);
 
-  if (selectedMFile) formData.append('selectedMFile', selectedMFile);
-  if (selectedPFile) formData.append('selectedPFile', selectedPFile);
+    dispatch(createPost(formData));
 
-  dispatch(createPost(formData));
-
-  setPostData({
-      title: '',
-      caption: '',
-      creator: '',
-      selectedMFile: '',
-      selectedPFile: ''
-    });
+    setPostData({ title: '', caption: '', creator: '' });
+    setSelectedMFile(null);
+    setSelectedPFile(null);
     if (musicInputRef.current) musicInputRef.current.value = '';
     if (thumbnailInputRef.current) thumbnailInputRef.current.value = '';
-
-};
+  };
 
 
   return (

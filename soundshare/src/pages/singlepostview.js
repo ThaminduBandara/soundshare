@@ -25,7 +25,7 @@ export default function Singlepostview({ post, onClose }) {
       <div className="popup-container" onClick={(e) => e.stopPropagation()}>
         <button className="popup-close" onClick={onClose}>×</button>
         
-        <img className="popup-img" src={post.selectedPFile} alt={post.title} />
+        <img className="popup-img" src={post.selectedPFile && post.selectedPFile.startsWith('data:') ? post.selectedPFile : `http://localhost:3001${post.selectedPFile}`} alt={post.title} />
         
         <div className="popup-content">
           <h2>{post.title}</h2>
@@ -34,11 +34,8 @@ export default function Singlepostview({ post, onClose }) {
 
             
       {post.selectedMFile && (
-        <audio className='audio' controls>
-          <source src={`http://localhost:3001${post.selectedMFile}`} type="audio/mpeg" />
-          
-        </audio>
-)}
+        <audio className='audio' controls src={post.selectedMFile.startsWith('data:') ? post.selectedMFile : `http://localhost:3001${post.selectedMFile}`} />
+      )}
           
           <div className="popup-actions">
             <DeleteIcon onClick={handleDelete} style={{ cursor: 'pointer', color: 'red' }} />

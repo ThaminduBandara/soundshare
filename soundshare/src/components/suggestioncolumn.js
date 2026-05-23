@@ -10,8 +10,10 @@ import Suggestpost from './suggestpost';
 export default function Suggestioncolumn() {
 
   const dispatch = useDispatch();
+
    useEffect(() => {
           dispatch(getUsers());
+          
       }, [dispatch ]);
  
   const users = useSelector((state) => state.users);

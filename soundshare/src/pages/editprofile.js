@@ -1,74 +1,55 @@
 
-import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../actions/users';
-import { useSelector } from 'react-redux';
-import "./editprofile.css";
-
+import './editprofile.css';
 
 const EditProfile = ({ isOpen, onClose }) => {
+  const user = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const imageInputRef = useRef(null);
 
-
-
-
-const user = useSelector((state) => state.auth);
-
- const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState({
     name: '',
     email: '',
     password: '',
     bio: ''
-    
   });
+  const [profilePicture, setProfilePicture] = useState(null);
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!user) return;
 
-const [profilePicture, setProfilePicture] = useState(null);
+    setUserData({
+      name: user.name || '',
+      email: user.email || '',
+      password: user.password || '',
+      bio: user.bio || ''
+    });
+    setProfilePicture(user.profilePicture || null);
+  }, [user]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-   useEffect(() => {
-      if (user) {
-        setUserData({
-          name: user.name || '',
-          email: user.email || '',
-          password: user.password || '',
-          bio: user.bio || '',
-          profilePicture: user.profilePicture || '',
-        });
-      }
-    }, [user]);
+    const formData = new FormData();
+    formData.append('name', userData.name);
+    formData.append('email', userData.email);
+    formData.append('password', userData.password);
+    formData.append('bio', userData.bio);
+    if (profilePicture && profilePicture instanceof File) {
+      formData.append('profilePicture', profilePicture);
+    }
 
+    dispatch(updateUser(user._id, formData));
 
-    const imageInputRef = useRef(null);
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-
-  const formData = new FormData();
-  formData.append('name', userData.name);
-  formData.append('email', userData.email);
-  formData.append('password', userData.password);
-  formData.append('bio', userData.bio);
-  if (profilePicture) formData.append('profilePicture', profilePicture);
-
-  dispatch(updateUser(user._id,formData));
-
-        setUserData({
-           name: '',
-           email: '',
-           password: '',
-           bio: '',
-           profilePicture: '',
-        });
-        if (imageInputRef.current) imageInputRef.current.value = '';
-        
-        onClose();
-      };
+    setUserData({ name: '', email: '', password: '', bio: '' });
+    setProfilePicture(null);
+    if (imageInputRef.current) imageInputRef.current.value = '';
+    onClose();
+  };
 
   if (!isOpen) return null;
-
 
   return (
     <div className="popup-overlay2">
@@ -80,16 +61,21 @@ const [profilePicture, setProfilePicture] = useState(null);
         <form onSubmit={handleSubmit} className="edit-form2">
           <div className="profile-pic-section2">
             <img
-              src={user?.profilePicture}
+              src={profilePicture instanceof File ? URL.createObjectURL(profilePicture) : (profilePicture || user?.profilePicture || '')}
               alt="Profile"
               className="profile-pic2"
             />
-            <input 
-            type="file"
-             accept=".jpg,.png"
-             ref={imageInputRef} 
-            onChange={(e) => setProfilePicture(e.target.files[0])}
-          />
+            <input
+              type="file"
+              accept=".jpg,.png"
+              ref={imageInputRef}
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  setProfilePicture(file);
+                }
+              }}
+            />
           </div>
 
           <input
@@ -104,7 +90,7 @@ const [profilePicture, setProfilePicture] = useState(null);
             placeholder="Bio"
             value={userData.bio}
             onChange={(e) => setUserData({ ...userData, bio: e.target.value })}
-          ></textarea>
+          />
 
           <input
             type="email"
@@ -121,7 +107,7 @@ const [profilePicture, setProfilePicture] = useState(null);
             onChange={(e) => setUserData({ ...userData, password: e.target.value })}
           />
 
-          <button type="submit" className="save-btn2" onClick={handleSubmit} >Save Changes</button>
+          <button type="submit" className="save-btn2">Save Changes</button>
         </form>
       </div>
     </div>
