@@ -1,6 +1,6 @@
 .signup-container {
     
-    background-image: url('/Users/thamindubandara/Documents/webapplication/SoundShare/soundshare/soundshare/src/assests/loginBackground.jpg');
+    background-image: url('../assests/loginBackground.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
