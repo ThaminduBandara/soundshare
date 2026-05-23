@@ -12,8 +12,14 @@ export default function Login(){
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(loginData));
-    navigate('/home');
+    (async () => {
+      try {
+        await dispatch(login(loginData));
+        navigate('/home');
+      } catch (err) {
+        // login action already alerted the user; keep them on login page
+      }
+    })();
   };
 
   return (

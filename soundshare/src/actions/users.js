@@ -31,9 +31,11 @@ export const login = (userData) => async (dispatch) => {
 
     localStorage.setItem('profile', JSON.stringify(data.user));
     console.log(data.user);
+    return data.user;
   } catch (error) {
     console.log(error.response?.data?.message || error.message);
     alert(error.response?.data?.message || 'Login failed');
+    throw error;
   }
 };
 
